@@ -93,13 +93,13 @@
 				  <div class="col-lg-12">
 					<div class="form-group">
 					  <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
-					  <input class="form-control" type="email" name="email" value="{{ $setting->email }}">
+					  <input class="form-control" type="text" name="email" value="{{ $setting->email }}">
 					</div>
 				  </div><!-- col-12 -->
 				  <div class="col-lg-12">
 					<div class="form-group">
 					  <label class="form-control-label">Mobile: <span class="tx-danger">*</span></label>
-					  <input class="form-control" type="number" name="mobile" value="{{ $setting->mobile }}">
+					  <input class="form-control" type="text" name="mobile" value="{{ $setting->mobile }}">
 					  <small>0171</small>
 					</div>
 				  </div><!-- col-12 -->

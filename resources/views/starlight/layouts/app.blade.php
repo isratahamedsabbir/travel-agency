@@ -35,8 +35,8 @@
     <script src="{{ asset('starlight/lib/Flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('starlight/lib/flot-spline/jquery.flot.spline.js') }}"></script>
     <script src="{{ asset('starlight/js/starlight.js') }}"></script>
+	@yield('script')
     <script src="{{ asset('starlight/js/ResizeSensor.js') }}"></script>
     <script src="{{ asset('starlight/js/dashboard.js') }}"></script>
-	@yield('script')
 </body>
 </html>

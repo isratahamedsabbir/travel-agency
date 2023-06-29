@@ -22,6 +22,8 @@
 	@yield('style')
 </head>
 <body>
+	@include('traveler/inc/alert')
+	@include('traveler/inc/modals')
 	@include('traveler/inc/nav')
     @yield('content')
 	@include('traveler/inc/footer')

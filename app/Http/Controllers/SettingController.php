@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Setting;
-use IIlluminate\Support\Facades\Storage;
+
 use auth;
 use Image;
 use rolecheck;
@@ -13,7 +13,7 @@ use rolecheck;
 class SettingController extends Controller
 {
     public function update_page(){
-		return view('starlight/setting/update', [
+		return view('starlight/setting', [
 			'setting' => Setting::first()
 		]);
     }

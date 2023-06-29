@@ -15,21 +15,21 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('icon');
-            $table->string('title');
-            $table->string('author');
-            $table->longText('keywords');
-            $table->longText('description');
-            $table->string('email');
-            $table->string('mobile');
-            $table->longText('address');
-            $table->string('facebook');
-            $table->string('twitter');
-            $table->string('linkedin');
-            $table->string('instagram');
-            $table->string('youtube');
+            $table->string('first_name')->default('md');
+            $table->string('last_name')->default('admin');
+            $table->string('icon')->default('icon.png');
+            $table->string('title')->default('ture agency site.');
+            $table->string('author')->default('admin');
+            $table->longText('keywords')->default('ture, agency');
+            $table->longText('description')->default('ture agency site.');
+            $table->string('email')->default('admin@mail.com');
+            $table->string('mobile')->default('01775567493');
+            $table->longText('address')->default('dhaka, bangladesh');
+            $table->string('facebook')->default(null);
+            $table->string('twitter')->default(null);
+            $table->string('linkedin')->default(null);
+            $table->string('instagram')->default(null);
+            $table->string('youtube')->default(null);
             $table->timestamps();
         });
     }

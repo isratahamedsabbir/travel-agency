@@ -10,6 +10,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.7",
+        "joggapp/laravel-google-translate": "^7.0",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
@@ -30,7 +31,9 @@
             "Database\\Seeders\\": "database/seeders/"
         },
 		"files": [
-			"app/helpers.php"
+			"app/Extra/helpers.php",
+			"app/Extra/variables.php",
+			"app/Extra/files.php"
 		]
     },
     "autoload-dev": {
