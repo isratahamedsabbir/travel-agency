@@ -34,10 +34,10 @@ class SslCommerzPaymentController extends Controller
         $post_data['cus_name'] = $request->customer_name;
         $post_data['cus_email'] = $request->customer_email;
         $post_data['cus_add1'] = $request->address1;
-        $post_data['cus_add2'] = $request->address2;
-        $post_data['cus_city'] = "";
-        $post_data['cus_state'] = $request->state;
-        $post_data['cus_postcode'] = $request->zip;
+        $post_data['cus_add2'] = "";
+        $post_data['cus_city'] = $request->city;
+        $post_data['cus_state'] = "";
+        $post_data['cus_postcode'] = $request->postcode;
         $post_data['cus_country'] = $request->country;
         $post_data['cus_phone'] = $request->customer_mobile;
         $post_data['cus_fax'] = "";
@@ -74,7 +74,14 @@ class SslCommerzPaymentController extends Controller
                 'status' => 'Pending',
                 'address' => $post_data['cus_add1'],
                 'transaction_id' => $post_data['tran_id'],
-                'currency' => $post_data['currency']
+                'currency' => $post_data['currency'],
+                'title' => $request->title,
+                'category' => $request->category,
+                'subcategory' => $request->subcategory,
+                'country' => $post_data['cus_country'],
+                'city' => $post_data['cus_city'],
+                'postcode' => $post_data['cus_postcode'],
+                'type' => 'online',
             ]);
 
         $sslc = new SslCommerzNotification();

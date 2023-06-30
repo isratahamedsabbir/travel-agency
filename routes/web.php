@@ -51,7 +51,10 @@ Route::post('message/insert/function', [FrontendController::class, 'message_func
 Route::post('subscriber/insert/function', [FrontendController::class, 'subscriber_function']);
 Route::post('review/insert/function', [FrontendController::class, 'review_function']);
 
-Route::get('payment/{id}', [FrontendController::class, 'online_payment_page']);
+Route::get('payment/online/page/{id?}', [FrontendController::class, 'online_payment_page']);
+Route::get('payment/offline/page/{id?}', [FrontendController::class, 'offline_payment_page']);
+Route::post('payment/offline/function', [FrontendController::class, 'offline_payment_function']);
+
 
 Route::get('language/{locale}', function(string $locale){
 	if (! in_array($locale, ['en', 'bn'])) {
@@ -109,6 +112,7 @@ Route::post('ckeditor/upload', [CkeditorController::class, 'upload'])->name('cke
 #Ajax
 Route::prefix('/dashboard/ajax')->group(function(){
 	Route::post('/get/subcategory/data', [AjaxController::class, 'subGetByAjax']);
+	Route::post('/get/cities/data', [AjaxController::class, 'citiesGetByAjax']);
 });
 
 

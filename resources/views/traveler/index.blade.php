@@ -4,26 +4,26 @@
     <meta name="twitter:site" content="@themepixels">
     <meta name="twitter:creator" content="@themepixels">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Starlight">
-    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="twitter:image" content="">
+    <meta name="twitter:title" content="{{ $setting->title }}">
+    <meta name="twitter:description" content="{!!$setting->description!!}">
+    <meta name="twitter:image" content="{{asset('uploads/'.$setting->icon)}}">
     <!-- Facebook -->
     <meta property="og:url" content="http://themepixels.me/starlight">
-    <meta property="og:title" content="Starlight">
-    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta property="og:image" content="">
-    <meta property="og:image:secure_url" content="">
+    <meta property="og:title" content="{{ $setting->title }}">
+    <meta property="og:description" content="{!!$setting->description!!}">
+    <meta property="og:image" content="{{asset('uploads/'.$setting->icon)}}">
+    <meta property="og:image:secure_url" content="{{asset('uploads/'.$setting->icon)}}">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="600">
     <!-- Meta -->
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="" name="{{ $setting->keywords }}">
+    <meta content="" name="{!!$setting->description!!}">
     <meta name="author" content="ThemePixels">
 
     <!-- Favicon -->
-    <link href="{{ asset('traveler/img/favicon.ico' ) }}" rel="icon">
-    <title>Starlight Responsive Bootstrap 4 Admin Template</title>
+    <link href="{{asset('uploads/'.$setting->icon)}}" rel="icon">
+    <title>{{ $setting->title }}</title>
 @endsection
 @section('content')
 @include('traveler\inc\carousel')
@@ -74,7 +74,7 @@
 								<a class="h5 text-decoration-none" href="{{ url('package/single/'.$package_value->id) }}">{{ $package_value->title }}</a>
 								<div class="border-top mt-4 pt-4">
 									<div class="d-flex justify-content-between">
-										<a href="{{ url('payment/'.$package_value->id) }}" class="btn btn-primary">Buy Now</a>
+										<a href="{{ url('payment/online/page/'.$package_value->id) }}" class="btn btn-primary">Buy Online</a>
 										<h5 class="m-0">{{ $package_value->price }} TK</h5>
 									</div>
 								</div>

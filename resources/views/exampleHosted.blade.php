@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="SSLCommerz">
     <title>Example - Hosted Checkout | SSLCommerz</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -39,12 +39,11 @@
         <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your cart</span>
-                <span class="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <h6 class="my-0">{{ $package->title }}</h6>
+                        <h6 class="my-0">Price</h6>
                     </div>
                     <span class="text-muted">{{ $package->price }} TK</span>
                 </li>
@@ -64,6 +63,29 @@
             <h4 class="mb-3">Billing address</h4>
             <form action="{{ url('/pay') }}" method="POST" class="needs-validation">
                 <input type="hidden" value="{{ csrf_token() }}" name="_token" />
+
+
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label for="firstName">Title</label>
+                        <input type="text" name="title" class="form-control" id="title" value="{{ $package->title}}" required>
+                    </div>
+                </div>
+                <div class="row d-none">
+                    <div class="col-md-12 mb-3">
+                        <label for="firstName">Category</label>
+                        <input type="text" name="category" class="form-control" id="category"  value="{{ App\Models\Category::find($package->category)->id}}" required>
+                    </div>
+                </div>
+                <div class="row d-none">
+                    <div class="col-md-12 mb-3">
+                        <label for="firstName">Subcategory</label>
+                        <input type="text" name="subcategory" class="form-control" id="subcategory" value="{{ App\Models\Subcategory::find($package->subcategory)->id}}" required>
+                    </div>
+                </div>
+
+
+
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <label for="firstName">Full name</label>
@@ -98,6 +120,35 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="country">Country</label>
+                        <select class="custom-select d-block w-100" name="country" id="countries">
+                            <option value="">Choose...</option>
+                            @foreach($country as $country_value)
+                                <option value="{{ $country_value->id }}">{{ $country_value->name }}</option>
+                            @endforeach
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="city">City</label>
+                        <select class="custom-select d-block w-100" id="cities" name="city"></select>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="postcode">Postcode</label>
+                        <input type="text" class="form-control" id="postcode" name="postcode" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Zip code required.
+                        </div>
+                    </div>
+                </div>
+
                 <div class="mb-3">
                     <label for="address">Address</label>
                     <input type="text" class="form-control" name="address1" id="address" placeholder="1234 Main St"
@@ -107,53 +158,12 @@
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                </div>
-
-                <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <label for="country">Country</label>
-                        <select class="custom-select d-block w-100" name="country" id="country" required>
-                            <option value="">Choose...</option>
-                            <option value="Bangladesh">Bangladesh</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please select a valid country.
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="state">State</label>
-                        <select class="custom-select d-block w-100" id="state" name="state" required>
-                            <option value="">Choose...</option>
-                            <option value="Dhaka">Dhaka</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please provide a valid state.
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="zip">Zip</label>
-                        <input type="text" class="form-control" id="zip" name="zip" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Zip code required.
-                        </div>
-                    </div>
-                </div>
+                
                 <hr class="mb-4">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="same-address">
                     <input type="hidden" value="{{ $total }}" name="amount" id="total_amount" required/>
-                    <label class="custom-control-label" for="same-address">Shipping address is the same as my billing
-                        address</label>
                 </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="save-info">
-                    <label class="custom-control-label" for="save-info">Save this information for next time</label>
-                </div>
-                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout (Hosted)</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
             </form>
         </div>
     </div>
@@ -167,13 +177,32 @@
         </ul>
     </footer>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+<script src="{{ asset('starlight/lib/jquery/jquery.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function(){
+    $('#countries').change(function(){
+        var country_id = $('#countries').val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type : 'POST',
+            url : '/dashboard/ajax/get/cities/data',
+            data : {country_id:country_id},
+            success : function(data){
+                $('#cities').html(data);
+            }
+        });
+    });
+});
+</script>
 </html>

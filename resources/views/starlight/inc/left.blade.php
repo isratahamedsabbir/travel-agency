@@ -41,11 +41,11 @@
 	  </div><!-- menu-item -->
 	</a><!-- sl-menu-link -->
 	<ul class="sl-menu-sub nav flex-column">
-	  <li class="nav-item"><a href="{{ url('dashboard/order/loop/') }}" class="nav-link">Order</a></li>
-	  <li class="nav-item"><a href="{{ url('dashboard/contact/loop/') }}" class="nav-link">Contact</a></li>
-	  <li class="nav-item"><a href="{{ url('dashboard/air_tickets/loop/') }}" class="nav-link">Air Ticket</a></li>
-	  <li class="nav-item"><a href="{{ url('dashboard/hotel/loop/') }}" class="nav-link">Hotel</a></li>
-	  <li class="nav-item"><a href="{{ url('dashboard/subscriber/loop/') }}" class="nav-link">Subscriber</a></li>
+	  <li class="nav-item"><a href="{{ url('dashboard/order/loop/') }}" class="nav-link">Order <span class="badge badge-warning badge-pill">3</span></a></li>
+	  <li class="nav-item"><a href="{{ url('dashboard/contact/loop/') }}" class="nav-link">Contact <span class="badge badge-warning badge-pill">3</span></a></li>
+	  <li class="nav-item"><a href="{{ url('dashboard/air_tickets/loop/') }}" class="nav-link">Air Ticket <span class="badge badge-warning badge-pill">3</span></a></li>
+	  <li class="nav-item"><a href="{{ url('dashboard/hotel/loop/') }}" class="nav-link">Hotel <span class="badge badge-warning badge-pill">3</span></a></li>
+	  <li class="nav-item"><a href="{{ url('dashboard/subscriber/loop/') }}" class="nav-link">Subscriber <span class="badge badge-warning badge-pill">3</span></a></li>
 	</ul>
 	<a href="#" class="sl-menu-link">
 	  <div class="sl-menu-item">

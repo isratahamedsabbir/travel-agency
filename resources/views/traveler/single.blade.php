@@ -4,26 +4,26 @@
     <meta name="twitter:site" content="@themepixels">
     <meta name="twitter:creator" content="@themepixels">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Starlight">
-    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="twitter:image" content="">
+    <meta name="twitter:title" content="{{ $package->title }}">
+    <meta name="twitter:description" content="{!!$package->description!!}">
+    <meta name="twitter:image" content="{{asset('uploads/'.$package->thumb)}}">
     <!-- Facebook -->
     <meta property="og:url" content="http://themepixels.me/starlight">
-    <meta property="og:title" content="Starlight">
-    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta property="og:image" content="">
-    <meta property="og:image:secure_url" content="">
+    <meta property="og:title" content="{{ $package->title }}">
+    <meta property="og:description" content="{!!$package->description!!}">
+    <meta property="og:image" content="{{asset('uploads/'.$package->thumb)}}">
+    <meta property="og:image:secure_url" content="{{asset('uploads/'.$package->thumb)}}">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="600">
     <!-- Meta -->
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="" name="{{ $setting->keywords }}">
+    <meta content="" name="{!!$package->description!!}">
     <meta name="author" content="ThemePixels">
 
     <!-- Favicon -->
-    <link href="{{ asset('traveler/img/favicon.ico' ) }}" rel="icon">
-    <title>Starlight Responsive Bootstrap 4 Admin Template</title>
+    <link href="{{asset('uploads/'.$package->thumb)}}" rel="icon">
+    <title>{{ $package->title }}</title>
 @endsection
 @section('content')
 <!-- Blog Start -->
@@ -55,6 +55,8 @@
                             <h3 class="text-center">dasdasdasd</h3>
                             <hr class="hr"/>
                             {!! $package->package !!}
+                            <a href="{{ url('payment/online/page/'.$package->id) }}" class="btn btn-primary">Buy Online</a>
+                            <a href="{{ url('payment/offline/page/'.$package->id) }}" class="btn btn-primary">Buy Offline</a>
                         </div>
                     </div>
                     <!-- Blog Detail End -->
@@ -90,7 +92,7 @@
     
                 <div class="col-lg-4 mt-5 mt-lg-0">
                     <!-- Author Bio -->
-                    <div class="d-flex flex-column text-center bg-white mb-5 py-5 px-4">
+                    <div class="d-flex flex-column bg-white mb-5 py-5 px-4">
                         <img src="{{ asset('uploads/'.$setting->icon) }}" class="img-fluid mx-auto mb-3" style="width: 100px;">
                         <h3 class="text-primary mb-3">{{ $setting->title }}</h3>
                         @php
@@ -139,7 +141,7 @@
                     <div class="mb-5">
                         <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Recent Post</h4>
                         @foreach($recent_package as $recent_package_key => $recent_package_value)
-                            <a class="d-flex align-items-center text-decoration-none bg-white mb-3" href="">
+                            <a class="d-flex align-items-center text-decoration-none bg-white mb-3" href="{{url('package/single/'.$recent_package_value->id)}}">
                                 <img class="img-fluid" src="{{ asset('uploads/'.$recent_package_value->thumb) }}" style="width:100px;" alt="">
                                 <div class="pl-3">
                                     <h6 class="m-1">{{ $recent_package_value->title }}</h6>
@@ -153,7 +155,7 @@
                     <div class="mb-5">
                         <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Releted Post</h4>
                         @foreach($related_package as $related_package_key => $related_package_value)
-                            <a class="d-flex align-items-center text-decoration-none bg-white mb-3" href="">
+                            <a class="d-flex align-items-center text-decoration-none bg-white mb-3" href="{{url('package/single/'.$related_package_value->id)}}">
                                 <img class="img-fluid" src="{{ asset('uploads/'.$related_package_value->thumb) }}" style="width:100px;" alt="">
                                 <div class="pl-3">
                                     <h6 class="m-1">{{ $related_package_value->title }}</h6>
