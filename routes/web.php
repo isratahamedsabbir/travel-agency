@@ -27,6 +27,12 @@ use App\Http\Controllers\VisaController;
 use App\Http\Controllers\UmrahController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\HotelController;
+use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,10 +52,19 @@ Route::get('package/subcategory/{id}', [FrontendController::class, 'subcategory_
 Route::post('package/search/', [FrontendController::class, 'search_package_page']);
 Route::get('package/single/{id}', [FrontendController::class, 'package_single_page']);
 
-Route::get('visa/single/{id}', [FrontendController::class, 'ticket_page']);
+//Route::get('visa/single/{id}', [FrontendController::class, 'ticket_page']);
 Route::post('message/insert/function', [FrontendController::class, 'message_function']);
 Route::post('subscriber/insert/function', [FrontendController::class, 'subscriber_function']);
 Route::post('review/insert/function', [FrontendController::class, 'review_function']);
+
+
+
+Route::post('ticket/insert/function', [FrontendController::class, 'ticket_function']);
+Route::post('hotel/insert/function', [FrontendController::class, 'hotel_function']);
+
+
+
+
 
 Route::get('payment/online/page/{id?}', [FrontendController::class, 'online_payment_page']);
 Route::get('payment/offline/page/{id?}', [FrontendController::class, 'offline_payment_page']);
@@ -101,8 +116,49 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 Auth::routes();
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('verified');
+Route::get('/dashboard/order/loop/', [HomeController::class, 'order_page'])->middleware('verified');
+Route::get('/dashboard/order/conform/{id}', [OrderController::class, 'order_conform'])->middleware('verified');
+Route::get('/dashboard/order/delete/{id}', [OrderController::class, 'order_delete'])->middleware('verified');
+
+
+Route::get('/dashboard/review/loop/', [HomeController::class, 'review_page'])->middleware('verified');
+Route::get('/dashboard/review/conform/{id}', [ReviewController::class, 'review_conform'])->middleware('verified');
+Route::get('/dashboard/review/delete/{id}', [ReviewController::class, 'review_delete'])->middleware('verified');
+
+
+
+
+Route::get('/dashboard/message/loop/', [HomeController::class, 'message_page'])->middleware('verified');
+Route::get('/dashboard/message/conform/{id}', [MessageController::class, 'message_conform'])->middleware('verified');
+Route::get('/dashboard/message/delete/{id}', [MessageController::class, 'message_delete'])->middleware('verified');
+
+
+
+Route::get('/dashboard/air_tickets/loop/', [HomeController::class, 'ticket_page'])->middleware('verified');
+Route::get('/dashboard/air_tickets/conform/{id}', [TicketController::class, 'ticket_conform'])->middleware('verified');
+Route::get('/dashboard/air_tickets/delete/{id}', [TicketController::class, 'ticket_delete'])->middleware('verified');
+
+
+
+Route::get('/dashboard/hotel/loop/', [HomeController::class, 'hotel_page'])->middleware('verified');
+Route::get('/dashboard/hotel/conform/{id}', [HotelController::class, 'hotel_conform'])->middleware('verified');
+Route::get('/dashboard/hotel/delete/{id}', [HotelController::class, 'hotel_delete'])->middleware('verified');
+
+
+
+
+
+Route::get('/dashboard/subscriber/loop/', [HomeController::class, 'subscriber_page'])->middleware('verified');
+Route::get('/dashboard/subscriber/conform/{id}', [SubscriberController::class, 'subscriber_conform'])->middleware('verified');
+Route::get('/dashboard/subscriber/delete/{id}', [SubscriberController::class, 'subscriber_delete'])->middleware('verified');
+
 
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('verified');
+
+
+Route::post('user/info/update/{id}', [UserController::class, 'update_function'])->middleware('verified');
+
 
 
 #sub Ckeditor

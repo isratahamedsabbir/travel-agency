@@ -23,7 +23,9 @@ use App\Models\Service;
 use App\Models\Umrah;
 use App\Models\Package;
 use App\Models\Order;
-
+use App\Models\History;
+use App\Models\Ticket;
+use App\Models\Hotel;
 
 use Image;
 
@@ -31,7 +33,7 @@ class FrontendController extends Controller
 {
     
 	public $data = [];
-	public function __construct(){
+	public function __construct(Request $request){
        $this->data = [
 		'carousel' => Carousel::all(),
 		'category' => Category::all(),
@@ -46,8 +48,16 @@ class FrontendController extends Controller
 		'membership' => Membership::all(),
 		'visa' => Visa::all(),
 		'package' => Package::latest()->paginate(24, ['*'], 'packages'),
+		'gallery' => Package::latest()->take(48)->get(),
 		'recent_package' => Package::latest()->take(12)->get()
 	   ];
+	   History::insert([
+			"name" => $request->ip(),
+			"title" => "visitor visite site.",
+			"description" => $request->server('HTTP_SEC_CH_UA_PLATFORM'),
+			"status" => true,
+			"created_at" => Carbon::now()
+		]);
     }
 	
 	public function index_page(){
@@ -177,6 +187,72 @@ class FrontendController extends Controller
 			return back()->with('success', 'you are summit Review');
 		}else{
 			return redirect('/')->with('error', 'Review submit fail.');
+		}
+	}
+	public function ticket_function(Request $request){
+		if($request->submit == "insert"){
+			$request->validate(
+				[
+					'name' => 'required',
+					'email' => 'required',
+					'mobile' => 'required',
+					'adult' => 'required',
+					'travel_date' => 'required',
+					'return_date' => 'required',
+					'form' => 'required',
+					'to' => 'required',
+				],
+			);
+			Ticket::insert([
+				"name" => $request->name,
+				"email" => $request->email,
+				"mobile" => $request->mobile,
+				"adult" => $request->adult,
+				"child" => $request->child,
+				"travel_date" => $request->travel_date,
+				"return_date" => $request->return_date,
+				"form" => $request->form,
+				"to" => $request->to,
+				"message" => $request->message,
+				"created_at" => Carbon::now()
+			]);
+			return redirect('/')->with('success', 'ticket buy successful');
+		}else{
+			return redirect('/')->with('error', 'ticket buy fail.');
+		}
+	}
+	public function hotel_function(Request $request){
+		if($request->submit == "insert"){
+			$request->validate(
+				[
+					'name' => 'required',
+					'email' => 'required',
+					'mobile' => 'required',
+					'adult' => 'required',
+					'check_in_date' => 'required',
+					'check_out_date' => 'required',
+					'hotel_name' => 'required',
+					'hotel_address' => 'required',
+					'room' => 'required',
+				],
+			);
+			Hotel::insert([
+				"name" => $request->name,
+				"email" => $request->email,
+				"mobile" => $request->mobile,
+				"adult" => $request->adult,
+				"child" => $request->child,
+				"check_in_date" => $request->check_in_date,
+				"check_out_date" => $request->check_out_date,
+				"hotel_name" => $request->hotel_name,
+				"hotel_address" => $request->hotel_address,
+				"room" => $request->room,
+				"message" => $request->message,
+				"created_at" => Carbon::now()
+			]);
+			return redirect('/')->with('success', 'you are subscriber');
+		}else{
+			return redirect('/')->with('error', 'subscriber permition fail.');
 		}
 	}
 }

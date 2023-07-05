@@ -16,7 +16,7 @@
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('traveler/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('traveler/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
-
+    <link rel="stylesheet" href="{{asset('jquery filtered image gallery/css/style.css') }}" />
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('traveler/css/style.css') }}" rel="stylesheet">
 	@yield('style')
@@ -43,6 +43,7 @@
     <script src="{{ asset('traveler/mail/contact.js') }}"></script>
 
     <!-- Template Javascript -->
+    <script src="{{asset('jquery filtered image gallery/js/filter-tags.js')}}"></script>
     <script src="{{ asset('traveler/js/main.js') }}"></script>
 	@yield('script')
 </body>

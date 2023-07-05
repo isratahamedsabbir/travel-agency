@@ -30,6 +30,8 @@ class CreateOrdersTable extends Migration
             $tble->integer('category');
             $tble->integer('subcategory');
             $tble->string('type');
+			$tble->integer('new')->default(true);
+			$table->timestamps();
         });
     }
 

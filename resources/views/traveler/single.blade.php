@@ -92,15 +92,17 @@
     
                 <div class="col-lg-4 mt-5 mt-lg-0">
                     <!-- Author Bio -->
-                    <div class="d-flex flex-column bg-white mb-5 py-5 px-4">
-                        <img src="{{ asset('uploads/'.$setting->icon) }}" class="img-fluid mx-auto mb-3" style="width: 100px;">
-                        <h3 class="text-primary mb-3">{{ $setting->title }}</h3>
-                        @php
-                            $mobile_array = explode(", ", $setting->mobile);
-                        @endphp
-                        @foreach($mobile_array as $mobile_value)
-                            <p><i class="fa fa-phone-alt mr-2"></i> {{ $mobile_value }}</p>
-                        @endforeach
+                    <div class="d-flex flex-column bg-primary mb-5 py-5 px-4">
+                        <img src="{{ asset('uploads/'.$setting->icon) }}" class="img-fluid mx-auto mb-3" style="width: 250px;">
+                        <h3 class="text-danger mb-3">{{ $setting->title }}</h3>
+						<ul class="list-inline m-0">
+							@php
+								$mobile_array = explode(", ", $setting->mobile);
+							@endphp
+							@foreach($mobile_array as $mobile_value)
+								<li class="py-2"><i class="fa fa-check text-danger mr-3"></i> {{ $mobile_value }}</li>
+							@endforeach
+						</ul>
                     </div>
     
                     <!-- Search Form -->
@@ -164,6 +166,21 @@
                             </a>
                         @endforeach
                     </div>
+					
+					<!-- Author Bio -->
+                    <div class="d-flex flex-column bg-primary mb-5 py-5 px-4">
+                        <img src="{{ asset('uploads/'.$setting->icon) }}" class="img-fluid mx-auto mb-3" style="width: 250px;">
+                        <h3 class="text-danger mb-3">{{ $setting->title }}</h3>
+						<ul class="list-inline m-0">
+							@php
+								$mobile_array = explode(", ", $setting->mobile);
+							@endphp
+							@foreach($mobile_array as $mobile_value)
+								<li class="py-2"><i class="fa fa-check text-danger mr-3"></i> {{ $mobile_value }}</li>
+							@endforeach
+						</ul>
+                    </div>
+					
 
                 </div>
             </div>

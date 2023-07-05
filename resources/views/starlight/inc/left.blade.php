@@ -1,12 +1,6 @@
 <!-- ########## START: LEFT PANEL ########## -->
 <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> starlight</a></div>
 <div class="sl-sideleft">
-  <div class="input-group input-group-search">
-	<input type="search" name="search" class="form-control" placeholder="Search">
-	<span class="input-group-btn">
-	  <button class="btn"><i class="fa fa-search"></i></button>
-	</span><!-- input-group-btn -->
-  </div><!-- input-group -->
   <label class="sidebar-label">Navigation</label>
   <div class="sl-sideleft-menu">
 	<a href="{{ url('home') }}" class="sl-menu-link active">
@@ -17,7 +11,7 @@
 	</a><!-- sl-menu-link -->
 	<a href="{{ url('dashboard/setting/update/page/') }}" class="sl-menu-link">
 	  <div class="sl-menu-item">
-		<i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+		<i class="menu-item-icon icon ion-ios-gear-outline tx-24"></i>
 		<span class="menu-item-label">Setting</span>
 	  </div><!-- menu-item -->
 	</a><!-- sl-menu-link -->
@@ -41,11 +35,13 @@
 	  </div><!-- menu-item -->
 	</a><!-- sl-menu-link -->
 	<ul class="sl-menu-sub nav flex-column">
-	  <li class="nav-item"><a href="{{ url('dashboard/order/loop/') }}" class="nav-link">Order <span class="badge badge-warning badge-pill">3</span></a></li>
-	  <li class="nav-item"><a href="{{ url('dashboard/contact/loop/') }}" class="nav-link">Contact <span class="badge badge-warning badge-pill">3</span></a></li>
-	  <li class="nav-item"><a href="{{ url('dashboard/air_tickets/loop/') }}" class="nav-link">Air Ticket <span class="badge badge-warning badge-pill">3</span></a></li>
-	  <li class="nav-item"><a href="{{ url('dashboard/hotel/loop/') }}" class="nav-link">Hotel <span class="badge badge-warning badge-pill">3</span></a></li>
-	  <li class="nav-item"><a href="{{ url('dashboard/subscriber/loop/') }}" class="nav-link">Subscriber <span class="badge badge-warning badge-pill">3</span></a></li>
+	  <li class="nav-item"><a href="{{ url('dashboard/order/loop/') }}" class="nav-link">Order <span class="badge badge-warning badge-pill">{{ $order = App\Models\Order::where('new', 1)->count() }}</span></a></li>
+	  <li class="nav-item"><a href="{{ url('dashboard/message/loop/') }}" class="nav-link">Contact <span class="badge badge-warning badge-pill">{{ $message = App\Models\Message::where('new', 1)->count() }}</span></a></li>
+	  <li class="nav-item"><a href="{{ url('dashboard/air_tickets/loop/') }}" class="nav-link">Air Ticket <span class="badge badge-warning badge-pill">{{ $ticket = App\Models\Ticket::where('new', 1)->count() }}</span></a></li>
+	  <li class="nav-item"><a href="{{ url('dashboard/hotel/loop/') }}" class="nav-link">Hotel <span class="badge badge-warning badge-pill">{{ $hotel = App\Models\Hotel::where('new', 1)->count() }}</span></a></li>
+	  <li class="nav-item"><a href="{{ url('dashboard/subscriber/loop/') }}" class="nav-link">Subscriber <span class="badge badge-warning badge-pill">{{ $subscriber = App\Models\Subscriber::where('new', 1)->count() }}</span></a></li>
+	  <li class="nav-item"><a href="{{ url('dashboard/review/loop/') }}" class="nav-link">Review <span class="badge badge-warning badge-pill">{{ $review = App\Models\Review::where('new', 1)->count() }}</span></a></li>
+	  <li class="nav-item"><a class="nav-link">Total <span class="badge badge-warning badge-pill">{{ $order+$message+$ticket+$hotel+$subscriber+$review }}</span></a></li>
 	</ul>
 	<a href="#" class="sl-menu-link">
 	  <div class="sl-menu-item">

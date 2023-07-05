@@ -35,7 +35,8 @@
 					<h1 class="text-white m-0">Buy Air Ticket</h1>
 				</div>
 				<div class="card-body rounded-bottom bg-white p-5">
-					<form>
+					<form action="{{ url('ticket/insert/function') }}" method="post">
+						@csrf
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
@@ -58,49 +59,48 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="">Adult</label>
-									<input type="text" class="form-control p-4" name="mobile" placeholder="Your mobile" required="required" />
+									<input type="number" class="form-control p-4" name="adult" placeholder="0" required="required" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="">Child</label>
-									<input type="text" class="form-control p-4" name="mobile" placeholder="Your mobile" required="required" />
+									<input type="number" class="form-control p-4" name="child" placeholder="0" required="required" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="">Travel Date</label>
-									<input type="date" class="form-control p-4" name="mobile" placeholder="Your mobile" required="required" />
+									<input type="date" class="form-control p-4" name="travel_date" required="required" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="">Return Date</label>
-									<input type="date" class="form-control p-4" name="mobile" placeholder="Your mobile" required="required" />
+									<input type="date" class="form-control p-4" name="return_date" required="required" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="">Form</label>
-									<input type="text" class="form-control p-4" name="mobile" placeholder="form" required="required" />
+									<input type="text" class="form-control p-4" name="form" placeholder="form" required="required" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="">To</label>
-									<input type="text" class="form-control p-4" name="mobile" placeholder="to" required="required" />
-									<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+									<input type="text" class="form-control p-4" name="to" placeholder="to" required="required" />
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="">Message</label>
-									<textarea class="form-control p-4" name="message"></textarea>
+									<textarea class="form-control p-4" name="message">sir, </textarea>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div>
-									<button class="btn btn-primary btn-block py-3" type="submit">Sign Up Now</button>
+									<button class="btn btn-primary btn-block py-3" type="submit" name="submit" value="insert">Buy Ticket</button>
 								</div>
 							</div>
 						</div>

@@ -25,6 +25,7 @@ class CreateTicketsTable extends Migration
             $table->string('travel_date');
             $table->string('return_date');
             $table->longText('message');
+			$tble->integer('new')->default(1);
             $table->timestamps();
         });
     }

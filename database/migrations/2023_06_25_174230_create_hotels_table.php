@@ -26,6 +26,7 @@ class CreateHotelsTable extends Migration
             $table->string('check_in_date');
             $table->string('check_out_date');
             $table->longText('message');
+			$tble->integer('new')->default(1);
             $table->timestamps();
         });
     }

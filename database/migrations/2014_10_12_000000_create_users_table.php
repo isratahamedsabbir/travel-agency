@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('role')->default(0);
             $table->string('photo')->default(null);
+            $table->longText('desctiption')->default(null);
             $table->string('question')->default(null);
             $table->string('answer')->default(null);
             $table->rememberToken();

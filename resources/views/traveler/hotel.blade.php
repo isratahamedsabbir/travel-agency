@@ -35,48 +35,49 @@
 					<h1 class="text-white m-0">Book Hotel</h1>
 				</div>
 				<div class="card-body rounded-bottom bg-white p-5">
-					<form>
+					<form action="{{ url('hotel/insert/function') }}" method="post">
+						@csrf
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="">Name</label>
-									<input type="text" class="form-control p-4" name="name" placeholder="Your name" required="required" />
+									<input type="text" class="form-control p-4" name="name" placeholder="Sakib Hasan" required="required" />
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="">Email</label>
-									<input type="email" class="form-control p-4" name="email" placeholder="Your email" required="required" />
+									<input type="email" class="form-control p-4" name="email" placeholder="example@mail.com" required="required" />
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="">Mobile</label>
-									<input type="text" class="form-control p-4" name="mobile" placeholder="Your mobile" required="required" />
+									<input type="text" class="form-control p-4" name="mobile" placeholder="017" required="required" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="">Adult</label>
-									<input type="text" class="form-control p-4" name="mobile" placeholder="Your mobile" required="required" />
+									<input type="number" class="form-control p-4" name="adult" placeholder="0" required="required" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="">Child</label>
-									<input type="text" class="form-control p-4" name="mobile" placeholder="Your mobile" required="required" />
+									<input type="number" class="form-control p-4" name="child" placeholder="0" required="required" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="">Check In date</label>
-									<input type="date" class="form-control p-4" name="check_in_date" placeholder="Your mobile" required="required" />
+									<input type="date" class="form-control p-4" name="check_in_date" required="required" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="">Check Out Date</label>
-									<input type="date" class="form-control p-4" name="check_in_date" placeholder="check out date" required="required" />
+									<input type="date" class="form-control p-4" name="check_out_date" required="required" />
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -94,18 +95,18 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="">Room</label>
-									<input type="text" class="form-control p-4" name="room" placeholder="room" required="required" />
+									<input type="text" class="form-control p-4" name="room" placeholder="1" required="required" />
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="">Message</label>
-									<textarea class="form-control p-4" name="message"></textarea>
+									<textarea class="form-control p-4" name="message">Sir, </textarea>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div>
-									<button class="btn btn-primary btn-block py-3" type="submit">Sign Up Now</button>
+									<button class="btn btn-primary btn-block py-3" type="submit" name="submit" value="insert">Buy Hotel Room</button>
 								</div>
 							</div>
 						</div>
