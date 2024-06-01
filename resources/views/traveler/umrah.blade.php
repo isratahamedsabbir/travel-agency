@@ -37,8 +37,13 @@
 </style>
 @endsection
 @section('content')
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+        <img src="{{ asset('add.gif') }}" width="100%" height="200px"/>
+    </div>
+</div>
 <!-- Registration Start -->
-<div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
+<div class="container-fluid bg-registration py-5">
 	<div class="container py-5">
 		<div class="row align-items-center">
 			<div class="col-lg-7 mb-5 mb-lg-0">
@@ -59,8 +64,8 @@
 	</div>
 </div>
 <!-- Registration End -->
-@include('traveler\inc\mobile')
-@include('traveler\inc\gallery')
+@include('traveler/inc/mobile')
+@include('traveler/inc/gallery')
 @endsection
 @section('script')
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>

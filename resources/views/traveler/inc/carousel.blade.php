@@ -54,13 +54,13 @@
 <!-- Booking Start -->
 <div class="container-fluid booking mt-5 pb-5">
 	<div class="container pb-5">
-		<div class="bg-light shadow" style="padding: 30px;">
+		<div class="bg-light shadow" style="padding: 20px;">
 			<div class="row align-items-center" style="min-height: 60px;">
 				<div class="col-md-12">
 					<div class="row">
 						<marquee>
 							@foreach($recent_package as $recent_package_key => $recent_package_value)
-								<a style="font-size:40px;" href="{{ url('package/single/'.$recent_package_value->id) }}"><img class="img-thumbnail" src="{{ asset('uploads/'.$recent_package_value->thumb) }}" style="width:60px;" alt="">
+								<a style="font-size:20px;" href="{{ url('package/single/'.$recent_package_value->id) }}"><img class="img-thumbnail" src="{{ asset('uploads/'.$recent_package_value->thumb) }}" style="width:60px;" alt="">
                                	{{ $recent_package_value->title }}</a>
 							@endforeach
 						</marquee>

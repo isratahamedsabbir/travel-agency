@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">Your cart</span>
+                <span class="text-muted">Cart Information</span>
             </h4>
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -53,9 +53,15 @@
                     </div>
                     <span class="text-muted">{{ $package->discount }} TK</span>
                 </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Online Charge</h6>
+                    </div>
+                    <span class="text-muted">5%</span>
+                </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (BDT)</span>
-                    <strong>{{ $total = $package->price - $package->discount }} TK</strong>
+                    <strong>{{ $total = ($package->price / 100 * 105) - $package->discount }} TK</strong>
                 </li>
             </ul>
         </div>
@@ -68,7 +74,7 @@
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <label for="firstName">Title</label>
-                        <input type="text" name="title" class="form-control" id="title" value="{{ $package->title}}" required>
+                        <input type="text" name="title" class="form-control" id="title" value="{{ $package->title}}" required readonly>
                     </div>
                 </div>
                 <div class="row d-none">
@@ -89,8 +95,7 @@
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <label for="firstName">Full name</label>
-                        <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder=""
-                               value="John Doe" required>
+                        <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder="john doe" required>
                         <div class="invalid-feedback">
                             Valid customer name is required.
                         </div>
@@ -103,8 +108,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">+88</span>
                         </div>
-                        <input type="text" name="customer_mobile" class="form-control" id="mobile" placeholder="Mobile"
-                               value="01711xxxxxx" required>
+                        <input type="text" name="customer_mobile" class="form-control" id="mobile" placeholder="017XXXXXXXX" required>
                         <div class="invalid-feedback" style="width: 100%;">
                             Your Mobile number is required.
                         </div>
@@ -112,9 +116,9 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                    <label for="email">Email <span class="text-muted">(Required)</span></label>
                     <input type="email" name="customer_email" class="form-control" id="email"
-                           placeholder="you@example.com" value="you@example.com" required>
+                           placeholder="you@example.com" required>
                     <div class="invalid-feedback">
                         Please enter a valid email address for shipping updates.
                     </div>
@@ -142,7 +146,7 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="postcode">Postcode</label>
-                        <input type="text" class="form-control" id="postcode" name="postcode" placeholder="" required>
+                        <input type="text" class="form-control" id="postcode" name="postcode" placeholder="1212" required>
                         <div class="invalid-feedback">
                             Zip code required.
                         </div>
@@ -151,15 +155,15 @@
 
                 <div class="mb-3">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" name="address1" id="address" placeholder="1234 Main St"
-                           value="93 B, New Eskaton Road" required>
+                    <textarea class="form-control" name="address1" id="address" rows="3" required></textarea>
                     <div class="invalid-feedback">
                         Please enter your shipping address.
                     </div>
                 </div>
-
-                
-                <hr class="mb-4">
+                <div class="mb-3">
+                    <label for="coupon">Coupon if Any</label>
+                    <input type="text" name="coupon" class="form-control" id="coupon" placeholder="er34t3">
+                </div>
                 <div class="custom-control custom-checkbox">
                     <input type="hidden" value="{{ $total }}" name="amount" id="total_amount" required/>
                 </div>
@@ -177,6 +181,7 @@
         </ul>
     </footer>
 </div>
+@include('traveler/inc/alert')
 <script src="{{ asset('starlight/lib/jquery/jquery.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -195,8 +200,8 @@ $(document).ready(function(){
             }
         });
         $.ajax({
-            type : 'POST',
-            url : '/dashboard/ajax/get/cities/data',
+            type : 'GET',
+            url : '{{ url("dashboard/ajax/get/cities/data") }}',
             data : {country_id:country_id},
             success : function(data){
                 $('#cities').html(data);

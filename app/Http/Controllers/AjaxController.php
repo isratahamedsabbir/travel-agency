@@ -13,8 +13,8 @@ use rolecheck;
 class AjaxController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
-		$this->middleware('rolecheck');
+        //$this->middleware('auth');
+		//$this->middleware('rolecheck');
     }
 	function subGetByAjax(Request $request){
 		$subcategory = Subcategory::where('category', $request->category)->get();

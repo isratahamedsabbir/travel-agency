@@ -2,7 +2,7 @@
     "use strict";
     
     // Dropdown on mouse hover
-    $(document).ready(function () {
+    /*$(document).ready(function () {
         function toggleNavbarMethod() {
             if ($(window).width() > 992) {
                 $('.navbar .dropdown').on('mouseover', function () {
@@ -16,9 +16,28 @@
         }
         toggleNavbarMethod();
         $(window).resize(toggleNavbarMethod);
+    });*/
+    
+    
+	
+	
+	// Enable Bootstrap dropdowns on hover
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+      dropdown.addEventListener('mouseenter', function () {
+        this.querySelector('.dropdown-menu').classList.add('show');
+      });
+    
+      dropdown.addEventListener('mouseleave', function () {
+        this.querySelector('.dropdown-menu').classList.remove('show');
+      });
     });
-    
-    
+
+	
+	
+	
+	
+	
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {

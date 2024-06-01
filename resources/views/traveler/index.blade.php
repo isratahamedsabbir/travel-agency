@@ -26,8 +26,8 @@
     <title>{{ $setting->title }}</title>
 @endsection
 @section('content')
-@include('traveler\inc\carousel')
-@include('traveler\inc\about')
+@include('traveler/inc/carousel')
+@include('traveler/inc/about')
 
 
 <!-- Service Start -->
@@ -41,7 +41,7 @@
 		@foreach($service as $service_key => $service_value)
 			<div class="col-lg-4 col-md-6 mb-4">
 				<div class="service-item bg-white text-center mb-2 py-5 px-4">
-					{!!$service_value->icon!!}
+					<i class="<?php echo $service_value->icon; ?> mx-auto mb-4"></i>
 					<h5 class="mb-2">{{ $service_value->name }}</h5>
 					<p class="m-0">{{ $service_value->title }}</p>
 				</div>
@@ -64,8 +64,8 @@
 			@foreach($package as $package_key => $package_value)
 				<div class="col-lg-4 col-md-6 mb-4">
 						<div class="package-item bg-white mb-2">
-							<img class="img-fluid" src="{{ asset('uploads/'.$package_value->thumb) }}" alt="">
-							<div class="p-4">
+							<img class="img-fluid" src="{{ asset('uploads/'.$package_value->thumb) }}" alt="" style="height: 250px;">
+							<div class="p-4" style="height: 300px;">
 								<div class="d-flex justify-content-between mb-3">
 									<small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{ App\Models\Category::find($package_value->category)->name }}</small>
 									<small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{ App\Models\Subcategory::find($package_value->subcategory)->name }}</small>
@@ -74,7 +74,8 @@
 								<a class="h5 text-decoration-none" href="{{ url('package/single/'.$package_value->id) }}">{{ $package_value->title }}</a>
 								<div class="border-top mt-4 pt-4">
 									<div class="d-flex justify-content-between">
-										<a href="{{ url('payment/online/page/'.$package_value->id) }}" class="btn btn-primary">Buy Online</a>
+										<a href="{{ url('payment/online/page/'.$package_value->id) }}" class="btn btn-primary">Online</a>
+										<a href="{{ url('payment/offline/page/'.$package_value->id) }}" class="btn btn-primary">Offline</a>
 										<h5 class="m-0">{{ $package_value->price }} TK</h5>
 									</div>
 								</div>
@@ -89,10 +90,10 @@
 <!-- Packages End -->
 
 
-@include('traveler\inc\contact')
+@include('traveler/inc/contact')
 
 
-@include('traveler\inc\testimonial')
+@include('traveler/inc/testimonial')
 
 
 <!-- Blog Start -->
@@ -106,12 +107,12 @@
 				<div class="col-lg-4 col-md-6 mb-4 pb-2">
 					<div class="blog-item">
 						<div class="position-relative">
-							<img class="img-fluid w-100" src="{{ asset('uploads/'.$membership_value->image ) }}" alt="">
+							<img style="height:300px;" class="img-fluid w-100" src="{{ asset('uploads/'.$membership_value->image ) }}" alt="">
 							<div class="blog-date">
 								<h6 class="font-weight-bold mb-n1">*</h6>
 							</div>
 						</div>
-						<div class="bg-white p-4">
+						<div class="bg-white p-4" style="height: 150px;">
 							<div class="d-flex mb-2">
 								<a class="text-primary text-uppercase text-decoration-none" href="">Code</a>
 								<span class="text-primary px-2">|</span>

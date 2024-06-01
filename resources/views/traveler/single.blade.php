@@ -26,8 +26,13 @@
     <title>{{ $package->title }}</title>
 @endsection
 @section('content')
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+        <img src="{{ asset('add.gif') }}" width="100%" height="200px"/>
+    </div>
+</div>
 <!-- Blog Start -->
-<div class="container-fluid py-5">
+<div class="container-fluid">
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-8">
@@ -91,20 +96,7 @@
                 </div>
     
                 <div class="col-lg-4 mt-5 mt-lg-0">
-                    <!-- Author Bio -->
-                    <div class="d-flex flex-column bg-primary mb-5 py-5 px-4">
-                        <img src="{{ asset('uploads/'.$setting->icon) }}" class="img-fluid mx-auto mb-3" style="width: 250px;">
-                        <h3 class="text-danger mb-3">{{ $setting->title }}</h3>
-						<ul class="list-inline m-0">
-							@php
-								$mobile_array = explode(", ", $setting->mobile);
-							@endphp
-							@foreach($mobile_array as $mobile_value)
-								<li class="py-2"><i class="fa fa-check text-danger mr-3"></i> {{ $mobile_value }}</li>
-							@endforeach
-						</ul>
-                    </div>
-    
+
                     <!-- Search Form -->
                     <div class="mb-5">
                         <div class="bg-white" style="padding: 30px;">
@@ -119,6 +111,22 @@
                             </form>
                         </div>
                     </div>
+            
+                    <!-- Author Bio -->
+                    <div class="d-flex flex-column bg-primary mb-5 py-5 px-4">
+                        <img src="{{ asset('uploads/'.$setting->icon) }}" class="img-fluid mx-auto mb-3" style="width: 250px;">
+                        <h3 class="text-danger mb-3">{{ $setting->title }}</h3>
+						<ul class="list-inline m-0">
+							@php
+								$mobile_array = explode(", ", $setting->mobile);
+							@endphp
+							@foreach($mobile_array as $mobile_value)
+								<li class="py-2"><i class="fa fa-check text-danger mr-3"></i> {{ $mobile_value }}</li>
+							@endforeach
+						</ul>
+                    </div>
+    
+                    
 
                     <!-- Category List -->
                     @foreach($category as $category_key => $category_value)
@@ -165,20 +173,6 @@
                                 </div>
                             </a>
                         @endforeach
-                    </div>
-					
-					<!-- Author Bio -->
-                    <div class="d-flex flex-column bg-primary mb-5 py-5 px-4">
-                        <img src="{{ asset('uploads/'.$setting->icon) }}" class="img-fluid mx-auto mb-3" style="width: 250px;">
-                        <h3 class="text-danger mb-3">{{ $setting->title }}</h3>
-						<ul class="list-inline m-0">
-							@php
-								$mobile_array = explode(", ", $setting->mobile);
-							@endphp
-							@foreach($mobile_array as $mobile_value)
-								<li class="py-2"><i class="fa fa-check text-danger mr-3"></i> {{ $mobile_value }}</li>
-							@endforeach
-						</ul>
                     </div>
 					
 

@@ -38,6 +38,10 @@
 	</div>
 </div>
 <!-- Topbar End -->
+
+
+
+
 <!-- Navbar Start -->
 <div class="container-fluid position-relative nav-bar p-0">
 	<div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
@@ -52,14 +56,37 @@
 				<div class="navbar-nav ml-auto py-0">
 					<a href="{{ url('/') }}" class="nav-item nav-link">{{ __('data.home') }}</a>
 					<div class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ __('data.package') }}</a>
+					  <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('data.package') }}</a>
+					  <ul class="dropdown-menu border-0 rounded-0 m-0" aria-labelledby="navbarDropdown">
+						@foreach($category as $category_key => $category_value)
+							<li class="dropdown">
+								<a href="{{ url('package/category/'.$category_value->id) }}" class="dropdown-item">{{ $category_value->name }}</a>
+								
+								@php
+									// Filter subcategories for the current category
+									$filteredSubcategories = $subcategory->filter(function($subcategory_value) use ($category_value) {
+										return $subcategory_value->category == $category_value->id;
+									});
+								@endphp
+
+								@if($filteredSubcategories->isNotEmpty())
+									<ul class="dropdown-menu" style="margin-top:-30px; margin-left:160px;">
+										@foreach($filteredSubcategories as $subcategory_value)
+											<li><a href="{{ url('package/subcategory/'.$subcategory_value->id) }}" class="dropdown-item">{{ $subcategory_value->name }}</a></li>
+										@endforeach
+									</ul>
+								@endif
+							</li>
+						@endforeach
+					  </ul>
+					</div>
+					<div class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ __('data.hotel') }}</a>
 						<div class="dropdown-menu border-0 rounded-0 m-0">
-							@foreach($subcategory as $subcategory_key => $subcategory_value)
-							<a href="{{ url('package/subcategory/'.$subcategory_value->id) }}" class="dropdown-item">{{ $subcategory_value->name }}</a>
-							@endforeach
+							<a href="{{ url('frontend/hotel') }}" class="dropdown-item">National</a>
+							<a href="{{ url('frontend/hotel') }}" class="dropdown-item">International</a>
 						</div>
 					</div>
-					<a href="{{ url('frontend/hotel') }}" class="nav-item nav-link">{{ __('data.hotel') }}</a>
 					<a href="{{ url('frontend/visa') }}" class="nav-item nav-link">{{ __('data.visa') }}</a>
 					<a href="{{ url('frontend/ticket') }}" class="nav-item nav-link">{{ __('data.air ticket') }}</a>
 					<a href="{{ url('frontend/umrah') }}" class="nav-item nav-link">{{ __('data.umrah') }}</a>

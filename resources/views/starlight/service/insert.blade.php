@@ -57,7 +57,7 @@
 					<div class="form-group">
 					  <label class="form-control-label">Icon: <span class="tx-danger">*</span></label>
 					  <input class="form-control" type="text" name="icon" value="{{ old('icon') }}">
-            <small><?php echo "< i class='fa fa-2x fa-route mx-auto mb-4'></i >"; ?></small>
+            <small><?php echo "fa fa-2x fa-route"; ?></small>
 					</div>
 				  </div><!-- col-12 -->
 				</div><!-- row -->

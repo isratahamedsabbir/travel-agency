@@ -33,6 +33,8 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\ReportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -167,8 +169,8 @@ Route::post('ckeditor/upload', [CkeditorController::class, 'upload'])->name('cke
 
 #Ajax
 Route::prefix('/dashboard/ajax')->group(function(){
-	Route::post('/get/subcategory/data', [AjaxController::class, 'subGetByAjax']);
-	Route::post('/get/cities/data', [AjaxController::class, 'citiesGetByAjax']);
+	Route::get('/get/subcategory/data', [AjaxController::class, 'subGetByAjax']);
+	Route::get('/get/cities/data', [AjaxController::class, 'citiesGetByAjax']);
 });
 
 
@@ -258,3 +260,6 @@ Route::prefix('/dashboard/package')->group(function(){
 	Route::post('/update/function/{id}/', [PackageController::class, 'update_function']);
 	Route::get('/remove/{id}/', [PackageController::class, 'remove_function']);
 });
+
+Route::resource('coupon', CouponController::class)->middleware('verified');
+Route::get('/report/income/', [ReportController::class, 'showReports']);

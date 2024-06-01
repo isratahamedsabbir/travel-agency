@@ -5,7 +5,7 @@
 }
 </style>
 <!-- Registration Start -->
-<div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
+<div class="container-fluid bg-registration py-5">
 	<div class="container py-5">
 		<div class="row align-items-center">
 			<div class="col-lg-7 mb-5 mb-lg-0">
@@ -38,7 +38,7 @@
 								<input type="email" name="email" class="form-control p-4" placeholder="Your email" required="required" />
 							</div>
 							<div class="form-group">
-								<input type="text" name="mobile" class="form-control p-4" placeholder="Your email" required="required" />
+								<input type="text" name="mobile" class="form-control p-4" placeholder="Your Mobile Number" required="required" />
 							</div>
 							<div class="form-group">
 								<textarea name="message" class="form-control p-4" required="required">Message</textarea>

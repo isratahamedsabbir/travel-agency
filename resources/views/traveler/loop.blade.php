@@ -26,8 +26,13 @@
     <title>{{ $setting->title }}</title>
 @endsection
 @section('content')
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+        <img src="{{ asset('add.gif') }}" width="100%" height="200px"/>
+    </div>
+</div>
 <!-- Packages Start -->
-<div class="container-fluid py-5">
+<div class="container-fluid">
 	<div class="container pt-5 pb-3">
 		<div class="text-center mb-3 pb-3">
 			<h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h6>
@@ -47,7 +52,8 @@
 								<a class="h5 text-decoration-none" href="{{ url('package/single/'.$package_value->id) }}">{{ $package_value->title }}</a>
 								<div class="border-top mt-4 pt-4">
 									<div class="d-flex justify-content-between">
-										<a href="{{ url('payment/'.$package_value->id) }}" class="btn btn-primary">Buy Now</a>
+										<a href="{{ url('payment/online/page/'.$package_value->id) }}" class="btn btn-primary">Online</a>
+										<a href="{{ url('payment/offline/page/'.$package_value->id) }}" class="btn btn-primary">Offline</a>
 										<h5 class="m-0">{{ $package_value->price }} TK</h5>
 									</div>
 								</div>

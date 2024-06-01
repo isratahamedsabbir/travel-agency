@@ -26,8 +26,13 @@
     <title>{{ $setting->title }}</title>
 @endsection
 @section('content')
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+        <img src="{{ asset('add.gif') }}" width="100%" height="200px"/>
+    </div>
+</div>
 <!-- Registration Start -->
-<div class="container-fluid py-5">
+<div class="container-fluid">
 	<div class="container py-5">
 		<div class="align-items-center">
 			<div class="card border-0">
@@ -112,10 +117,10 @@
 </div>
 <!-- Registration End -->
 
-@include('traveler\inc\mobile')
+@include('traveler/inc/mobile')
 
 
-@include('traveler\inc\gallery')
+@include('traveler/inc/gallery')
 @endsection
     
 

@@ -6,7 +6,7 @@
                 <div id="buttons"></div>
                 <div id="gallery">
                     @foreach($gallery as $gallery_key => $gallery_vlaue)
-                        <a href="{{ url('package/single/'.$gallery_vlaue->id) }}"><img src="{{ asset('uploads/'.$gallery_vlaue->thumb) }}" data-tags="{{ App\Models\Subcategory::find($gallery_vlaue->subcategory)->name }}" alt="lemon" /></a>
+                        <a href="{{ url('package/single/'.$gallery_vlaue->id) }}"><img src="{{ asset('uploads/'.$gallery_vlaue->thumb) }}" data-tags="{{ App\Models\Subcategory::find($gallery_vlaue->subcategory)->name }}" alt="lemon" style="width: 175px;"/></a>
                     @endforeach
                 </div>
             </div>

@@ -136,7 +136,7 @@
 <!-- Registration End -->
 
 
-@include('traveler\inc\gallery')
+@include('traveler/inc/gallery')
 @endsection
 @section('script')
 <script>
@@ -149,8 +149,8 @@ $(document).ready(function(){
             }
         });
         $.ajax({
-            type : 'POST',
-            url : '/dashboard/ajax/get/cities/data',
+            type : 'GET',
+             url : '{{ url("dashboard/ajax/get/cities/data") }}',
             data : {country_id:country_id},
             success : function(data){
                 $('#cities').html(data);

@@ -1,5 +1,5 @@
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> starlight</a></div>
+<div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> {{config('app.name')}}</a></div>
 <div class="sl-sideleft">
   <label class="sidebar-label">Navigation</label>
   <div class="sl-sideleft-menu">
@@ -119,6 +119,28 @@
 	<ul class="sl-menu-sub nav flex-column">
 	  <li class="nav-item"><a href="{{ url('dashboard/visa/insert/page/') }}" class="nav-link">Insert Visa</a></li>
 	  <li class="nav-item"><a href="{{ url('dashboard/visa/loop/') }}" class="nav-link">All Visa</a></li>
+	</ul>
+	<a href="#" class="sl-menu-link">
+	  <div class="sl-menu-item">
+		<i class="menu-item-icon icon ion-ios-gear-outline tx-24"></i>
+		<span class="menu-item-label">Coupon</span>
+		<i class="menu-item-arrow fa fa-angle-down"></i>
+	  </div><!-- menu-item -->
+	</a><!-- sl-menu-link -->
+	<ul class="sl-menu-sub nav flex-column">
+	  <li class="nav-item"><a href="{{ url('/coupon/create') }}" class="nav-link">Insert </a></li>
+	  <li class="nav-item"><a href="{{ url('/coupon') }}" class="nav-link">All Token </a></li>
+	</ul>
+	<a href="#" class="sl-menu-link">
+	  <div class="sl-menu-item">
+		<i class="menu-item-icon icon ion-ios-gear-outline tx-24"></i>
+		<span class="menu-item-label">Reports</span>
+		<i class="menu-item-arrow fa fa-angle-down"></i>
+	  </div><!-- menu-item -->
+	</a><!-- sl-menu-link -->
+	<ul class="sl-menu-sub nav flex-column">
+	  <li class="nav-item"><a href="{{ url('/report/income/') }}" class="nav-link">Monthly Income </a></li>
+	  <li class="nav-item"><a href="" class="nav-link">Total Income </a></li>
 	</ul>
   </div><!-- sl-sideleft-menu -->
 

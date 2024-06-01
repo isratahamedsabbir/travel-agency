@@ -15,22 +15,22 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $tble->string('name');
-            $tble->string('email');
-            $tble->string('phone');
-            $tble->double('amount');
-            $tble->longText('address');
-            $tble->string('status');
-            $tble->string('transaction_id');
-            $tble->string('currency');
-            $tble->integer('country');
-            $tble->integer('city');
-            $tble->integer('postcode');
-            $tble->string('title');
-            $tble->integer('category');
-            $tble->integer('subcategory');
-            $tble->string('type');
-			$tble->integer('new')->default(true);
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
+            $table->double('amount');
+            $table->longText('address');
+            $table->string('status');
+            $table->string('transaction_id');
+            $table->string('currency');
+            $table->integer('country');
+            $table->integer('city');
+            $table->integer('postcode');
+            $table->string('title');
+            $table->integer('category');
+            $table->integer('subcategory');
+            $table->string('type');
+			$table->integer('new')->default(true);
 			$table->timestamps();
         });
     }

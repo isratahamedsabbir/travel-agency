@@ -14,6 +14,7 @@
 				<a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
 				<a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
 			</div>
+			@include('traveler/inc/map')
 		</div>
 		<div class="col-lg-3 col-md-6 mb-5">
 			<h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>

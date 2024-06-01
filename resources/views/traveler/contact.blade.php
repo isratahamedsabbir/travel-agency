@@ -26,9 +26,14 @@
     <title>{{ $setting->title }}</title>
 @endsection
 @section('content')
-@include('traveler\inc\contact')
-@include('traveler\inc\mobile')
-@include('traveler\inc\gallery')
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+        <img src="{{ asset('add.gif') }}" width="100%" height="200px"/>
+    </div>
+</div>
+@include('traveler/inc/contact')
+@include('traveler/inc/mobile')
+@include('traveler/inc/gallery')
 @endsection
     
 

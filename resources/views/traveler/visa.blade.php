@@ -26,7 +26,7 @@
     <title>{{ $setting->title }}</title>
 @endsection
 @section('content')
-@include('traveler\inc\carousel')
+@include('traveler/inc/carousel')
 
 <!-- Destination Start -->
 <div class="container-fluid py-5">
@@ -68,8 +68,8 @@
 	</div>
 </div>
 <!-- Destination Start -->
-@include('traveler\inc\testimonial')
-@include('traveler\inc\gallery')
+@include('traveler/inc/testimonial')
+@include('traveler/inc/gallery')
 @endsection
     
 

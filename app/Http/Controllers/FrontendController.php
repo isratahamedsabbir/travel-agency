@@ -51,13 +51,13 @@ class FrontendController extends Controller
 		'gallery' => Package::latest()->take(48)->get(),
 		'recent_package' => Package::latest()->take(12)->get()
 	   ];
-	   History::insert([
+	   /*History::insert([
 			"name" => $request->ip(),
 			"title" => "visitor visite site.",
 			"description" => $request->server('HTTP_SEC_CH_UA_PLATFORM'),
 			"status" => true,
 			"created_at" => Carbon::now()
-		]);
+		]);*/
     }
 	
 	public function index_page(){
