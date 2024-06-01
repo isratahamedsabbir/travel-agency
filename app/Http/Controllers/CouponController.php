@@ -15,7 +15,8 @@ class CouponController extends Controller
      */
     public function index()
     {
-        echo "hello";
+        $coupons = Coupon::all();
+        return view('starlight/coupon/index', compact('coupons'));
     }
 
     /**
@@ -56,7 +57,7 @@ class CouponController extends Controller
 			]);
 			return redirect('coupon')->with('success', 'coupon add success');
 		}else{
-			return redirect('home')->with('success', 'coupon not insert');
+			return redirect('home')->with('error', 'coupon not insert');
 		}
     }
 
@@ -79,7 +80,9 @@ class CouponController extends Controller
      */
     public function edit(Coupon $coupon)
     {
-        //
+        //echo $coupon;
+        //$coupons = Coupon::all();
+        return view('starlight/coupon/update', compact('coupon'));
     }
 
     /**

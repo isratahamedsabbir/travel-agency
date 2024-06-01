@@ -128,8 +128,8 @@
 	  </div><!-- menu-item -->
 	</a><!-- sl-menu-link -->
 	<ul class="sl-menu-sub nav flex-column">
-	  <li class="nav-item"><a href="{{ url('/coupon/create') }}" class="nav-link">Insert </a></li>
-	  <li class="nav-item"><a href="{{ url('/coupon') }}" class="nav-link">All Token </a></li>
+	  <li class="nav-item"><a href="{{ route('coupon.create') }}" class="nav-link">Insert </a></li>
+	  <li class="nav-item"><a href="{{ route('coupon.index') }}" class="nav-link">All Token </a></li>
 	</ul>
 	<a href="#" class="sl-menu-link">
 	  <div class="sl-menu-item">

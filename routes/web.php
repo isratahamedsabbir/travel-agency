@@ -262,4 +262,5 @@ Route::prefix('/dashboard/package')->group(function(){
 });
 
 Route::resource('coupon', CouponController::class)->middleware('verified');
+
 Route::get('/report/income/', [ReportController::class, 'showReports']);
