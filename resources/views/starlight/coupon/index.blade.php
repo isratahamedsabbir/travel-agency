@@ -47,8 +47,8 @@
         <table id="datatable1" class="table display responsive nowrap">
           <thead>
             <tr>
-              <th class="wd-15p">SN</th>
-              <th class="wd-15p">Code</th>
+              <th class="wd-15p text-center">SN</th>
+              <th class="wd-15p text-center">Code</th>
               <th class="wd-15p text-center">Number</th>
               <th class="wd-15p text-center">Discount</th>
               <th class="wd-15p text-center">Type</th>
@@ -62,12 +62,12 @@
             @endphp
             @forelse($coupons as $coupon)
             <tr>
-              <td>{{ $sn++ }}</td>
-              <td>{{ $coupon->code }}</td>
-              <td>{{ $coupon->number }}</td>
-              <td>{{ $coupon->discount }}</td>
-              <td>{{ $coupon->type }}</td>
-              <td>{{ $coupon->expire }}</td>
+              <td class="text-center">{{ $sn++ }}</td>
+              <td class="text-center">{{ $coupon->code }}</td>
+              <td class="text-center">{{ $coupon->number }}</td>
+              <td class="text-center">{{ $coupon->discount }}</td>
+              <td class="text-center">{{ $coupon->type == 1 ? 'Taka' : 'parcent' }}</td>
+              <td class="text-center">{{ Carbon\Carbon::parse($coupon->expire)->format('d-m-Y') }}</td>
               <td class="text-center">
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                   <div class="btn-group" role="group">

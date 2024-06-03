@@ -24,19 +24,21 @@ class SslCommerzPaymentController extends Controller
     public function index(Request $request)
     {
         /*coupon code  begian*/
-         /*$discount = 0;
-         $coupon = Coupon::where('code', $request->coupon)->first();
-         if($coupon){
-            if($coupon->type == 1){
-                $discount = $coupon->discount;
-             }elseif($coupon->type == 2){
-                $discount = ($request->amount * $coupon->discount) / 100;
-             }else{
-                $discount = 0;
-             }
-         }else{
-            return redirect()->back()->with('error', 'Coupon not found.');
-         }*/
+         $discount = 0;
+         if($request->coupon){
+            $coupon = Coupon::where('code', $request->coupon)->first();
+            if($coupon){
+                if($coupon->type == 1){
+                    $discount = $coupon->discount;
+                }elseif($coupon->type == 2){
+                    $discount = ($request->amount * $coupon->discount) / 100;
+                }else{
+                    $discount = 0;
+                }
+            }else{
+                return redirect()->back()->with('error', 'Coupon not found.');
+            } 
+         }
         /*coupon code  end*/
         
         # Here you have to receive all the order data to initate the payment.
@@ -44,7 +46,7 @@ class SslCommerzPaymentController extends Controller
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
         $post_data = array();
-        $post_data['total_amount'] = $request->amount; # You cant not pay less than 10
+        $post_data['total_amount'] = $request->amount - $discount; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 

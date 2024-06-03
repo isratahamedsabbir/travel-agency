@@ -37,6 +37,7 @@
     <div class="card pd-20 pd-sm-40">
       <h6 class="card-body-title">Top Label Layout</h6>
       <p class="mg-b-20 mg-sm-b-30">A form with a label on top of each form control.</p>
+      
       {{ html()->form('POST', route('coupon.store'))->open() }}
       <div class="form-group">
         {{ html()->label('Code', 'code') }}

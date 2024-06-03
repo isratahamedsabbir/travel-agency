@@ -9,7 +9,7 @@
 	  <div class="dropdown">
 		<a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
 		  <span class="logged-name">{{ Auth::user()->name }}</span>
-		  <img src="{{ asset('starlight/img/img3.jpg') }}" class="wd-32 rounded-circle d-none" alt="">
+		  <img src="{{ asset('img/thumbnail.png') }}" class="wd-32 rounded-circle" alt="">
 		</a>
 		<div class="dropdown-menu dropdown-menu-header wd-200">
 		  <ul class="list-unstyled user-profile-nav">
@@ -28,7 +28,7 @@
 		</div><!-- dropdown-menu -->
 	  </div><!-- dropdown -->
 	</nav>
-	<div class="navicon-right d-none">
+	<div class="navicon-right">
 	  <a id="btnRightMenu" href="" class="pos-relative">
 		<i class="icon ion-ios-bell-outline"></i>
 		<!-- start: if statement -->
